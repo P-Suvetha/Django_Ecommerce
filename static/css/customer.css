@@ -1,0 +1,13 @@
+.yellow-text {
+    color: #4095e0;
+    font-size: 20px;
+    font-style: italic;
+    text-align: left;
+}
+
+.full-width-image {
+    width: 100%;
+    max-width: 400px; /* You can adjust this as needed */
+    height: auto;
+    display: block;
+}

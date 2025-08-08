@@ -1,0 +1,7 @@
+
+.full-width-image {
+  width: 100%;
+  max-width: 400px; /* or your preferred width */
+  height: auto;
+  display: block;
+}

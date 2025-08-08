@@ -1,0 +1,12 @@
+{%extends 'base.html' %}
+
+{%block content%}
+<h1>Orders Adding Page</h1>  
+<form action="" method="POST">
+    {%csrf_token%}
+    {{order_form.as_p}}
+
+    <input type="submit">
+
+</form>
+{%endblock%}

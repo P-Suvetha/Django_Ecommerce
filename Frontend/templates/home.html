@@ -1,0 +1,59 @@
+
+{% extends 'base.html' %}  
+
+
+  {%block content%}  
+    <h1>Django Application</h1>
+    <!-- {{name}}<br>
+    {{email}}<br>
+
+    {{number}}<br>
+    {{marks}} -->
+
+ {% for user in users %}
+    <h3>User Information</h3>
+    <p><strong>Name:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    
+    <p><strong>Role:</strong> 
+        {% if user.role == "student" %}
+            Student
+        {% elif user.role == "teacher" %}
+            Teacher
+        {% elif user.role == "admin" %}
+            Admin
+        {% else %}
+            Unknown
+        {% endif %}
+    </p>
+
+    <p><strong>Numbers:</strong></p>
+    <ul>
+        {% for n in user.number %}
+            <li>{{ n }}</li>
+        {% endfor %}
+    </ul>
+
+    <p><strong>Marks:</strong></p>
+    <ul>
+        <li>Tamil: {{ user.marks.tamil }}</li>
+        <li>English: {{ user.marks.english }}</li>
+        <li>Maths: {{ user.marks.maths }}</li>
+    </ul>
+    <hr>
+{% endfor %}
+
+    
+    {%for user in users%}
+        {% if user.role == "student"%}
+            <p>Welcome, Student!</p>
+        {% elif user.role == "teacher" %}
+            <p>Welcome, Teacher!</p>
+        {% elif user.role == "admin" %}
+            <p>Welcome, Admin!</p>
+        {% else %}
+            <p>Welcome, Guest!</p>
+        {% endif %}
+    {%endfor%}
+{%endblock%}
+ 

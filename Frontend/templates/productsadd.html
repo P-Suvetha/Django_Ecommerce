@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Products Adding Page</h1>
+
+    <a href="/inventory/products/">
+        <button>Back</button>
+    </a>
+
+    {# Django templates do not support 'in [0, 1]' syntax — use 'or' instead #}
+    {% if request.user.role == 0 or request.user.role == 1 %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ product_form }}
+            <button type="submit">Add Product</button>
+        </form>
+    {% else %}
+        <p class="text-danger">⛔ You are not allowed to add products.</p>
+    {% endif %}
+{% endblock %}

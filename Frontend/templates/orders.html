@@ -1,0 +1,57 @@
+{% extends 'base.html' %}  
+
+
+  {%block content%} 
+  
+  <h1>Order List Page</h1>
+{% if request.user.role|add:0 == 0 %}
+
+<a href="/orders/add/order/"> 
+    <button>Add Orders</button>
+</a>
+{% endif %}
+  <table>
+    <thead>
+        <tr>
+            <th>order</th>
+            <th>Product</th>
+            <th>Order Number</th>
+            <th>Date</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>GST Amount</th>
+            <th>Bill Amount</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in all_orders %}
+        <tr>
+
+            <td>{{order.Customer_reference}}</td>
+            <td>{{order.product_reference}}</td>
+            <td>{{order.order_number}}</td>
+            <td>{{order.order_date}}</td>
+            <td>{{order.quantity}}</td>
+            <td>{{order.amount}}</td>
+            <td>{{order.gst_amount}}</td>
+            <td>{{order.bill_amount}}</td>
+            <td>
+                <a href="{% url 'order_update' order.id %}  ">
+                    <button>Update</button>
+                </a>
+            </td>
+             <td>
+                <a href="{% url 'order_delete' order.id %}  ">
+                    <button>Delete</button>
+                </a>
+            </td>
+
+
+        </tr>
+        {% endfor %}
+
+    </tbody>
+  </table>
+  {%endblock%}
