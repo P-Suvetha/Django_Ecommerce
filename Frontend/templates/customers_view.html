@@ -9,7 +9,7 @@
     <img class="full-width-image" src="{% static 'assets/images/customer.jpg' %}" alt="Customer Image">  
     <br><br><br>
 
-    {% if request.user.role in [0, 1] %}
+    {% if request.user.role == 0 or request.user.role == 1 %}
     <a href="/orders/customers/add">
         <button>Add Customer</button>
     </a>
@@ -20,7 +20,7 @@
             <tr>
                 <th>Customer Name</th>
                 <th>Initial Date</th>
-                {% if request.user.role in [0, 1] %}
+                {% if request.user.role == 0 or request.user.role == 1 %}
                   <th>Update</th>
                   <th>Delete</th>
                 {% endif %}
@@ -32,7 +32,7 @@
                 <td>{{ customer.customer_name }}</td>
                 <td>{{ customer.customer_since }}</td>
 
-                {% if request.user.role in [0, 1] %}
+                {% if request.user.role == 0 or request.user.role == 1 %}
                 <td>
                     <a href="{% url 'customer_update' customer.id %}">
                         <button>Update</button>
